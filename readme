@@ -1,1 +1,15 @@
-This is the repository for an ebay clone application written in java.
+Notes:
+
+Goals for this project:
+
+- Product Listings
+- Bidding System
+- Payment System
+- User Authentication System
+- Support 20+ Users
+- Handle Concurrent Requests
+- Rate Throttling
+- Database Integration
+- RESTful Design
+- Complete Frontend
+- 
