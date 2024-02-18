@@ -8,11 +8,26 @@ Goals for this project:
 - Bidding System
 - Payment System
 - User Authentication System
-- Support 20+ Users
+- Support 50+ Users
 - Handle Concurrent Requests
 - Rate Throttling
 - Database Integration
+	- Need to think about what database to use
+	- Need to design a schema (Established Tables, Fields, etc.)
 - RESTful Design
+	- Resource Naming
+	- HTTP methods
+		- GET
+		- POST
+		- PUT
+		- DELETE
+	- Resource Representation
+		- JSON
+	- URI structure
+	- Statelessness
+	- Reponse Codes
+	- Pagination ?
+	- Documentation
 - Complete Frontend
 
 
