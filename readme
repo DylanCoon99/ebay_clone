@@ -3,6 +3,8 @@ Notes:
 Goals for this project:
 
 - Product Listings
+	- Be able to search for certain items?
+	- Maybe just have one big listing of items
 - Bidding System
 - Payment System
 - User Authentication System
@@ -12,4 +14,42 @@ Goals for this project:
 - Database Integration
 - RESTful Design
 - Complete Frontend
+
+
+High Level Architecture
 - 
+
+
+Class Level Architecture
+- User Management
+	- User -> user account; (username, password, email, payment info, etc.)
+	- UserRepo -> interface for CRUD operations for the user
+	- UserService -> business logic related to user management (registration, login, update profile) 
+	*might not include this in final result
+
+- Product Management
+	- Product -> product listed on the app; (name of the product, price, description, picture, etc.)
+	- ProductRepo -> interface for CRUD operations for the product
+	- ProductService -> business logic related to product management (listing, searching, filtering)
+
+- Transaction Management
+	- Transaction -> represents a transaction between the buyer and the seller of a product 
+		-> (buyer, seller, product, etc.)
+	- TransactionRepo -> interface for CRUD operations for the transactions
+	- TransactionService -> business logic related to transactions (bidding, purchasing, etc.)
+
+- Authentication and Authorization
+	- AuthenticationService -> user authentication; (login, logout)
+	- AuthorizationService -> user authorization; (role-based access control)
+
+- API Controllers
+	- UserController -> RESTful endpoints for user-related operations (registration, login)
+	- ProductController -> RESTful endpoints for the product-related operations (listing, searching)
+	- TransactionController -> RESTful endpoints for the transaction-related operations (bidding, purchasing)
+
+- Exception Handling
+	- GlobalExceptionHandler -> Handles exceptions and maps them to a HTTP response code
+
+- Security
+	- SecurityConfig -> Configures security settings for the app
+
