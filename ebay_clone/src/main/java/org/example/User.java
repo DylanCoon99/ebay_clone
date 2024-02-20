@@ -16,7 +16,7 @@ public class User {
         this.userID = userID;
     }
 
-    // get userID
+    // get userIDmy
     public Integer getUserID() {
         return this.userID;
     }
