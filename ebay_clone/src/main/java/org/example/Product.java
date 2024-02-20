@@ -9,6 +9,7 @@ public class Product {
     private String description;
 
     // think about how to display an image for each product
+    // private ____ image;
 
     // set productID
     public void setProductID() {
