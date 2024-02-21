@@ -29,7 +29,8 @@ public class Main {
             user1.setEmail("abc123@gmail.com");
 
             Integer rowsAffected = statement.executeUpdate(String.format("INSERT INTO users (username, email, password) VALUES ('%s', '%s', '%s')", user1.getUsername(), user1.getEmail(), user1.getPassword()));
-            System.out.println(rowsAffected);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
+            System.out.println(resultSet);
 
         } catch (java.sql.SQLException e) {
             // temporary logging
