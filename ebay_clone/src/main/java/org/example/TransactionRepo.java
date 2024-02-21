@@ -1,4 +1,4 @@
 package org.example;
 
-public class TransactionRepo {
+public interface TransactionRepo {
 }

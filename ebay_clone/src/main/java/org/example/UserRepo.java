@@ -1,4 +1,4 @@
 package org.example;
 
-public class UserRepo {
+public interface UserRepo {
 }

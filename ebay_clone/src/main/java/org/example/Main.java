@@ -30,7 +30,12 @@ public class Main {
 
             Integer rowsAffected = statement.executeUpdate(String.format("INSERT INTO users (username, email, password) VALUES ('%s', '%s', '%s')", user1.getUsername(), user1.getEmail(), user1.getPassword()));
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
-            System.out.println(resultSet);
+
+            while(resultSet.next()) {
+                int user_id = resultSet.getInt("user_id");
+
+            }
+
 
         } catch (java.sql.SQLException e) {
             // temporary logging
