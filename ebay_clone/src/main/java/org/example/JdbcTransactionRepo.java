@@ -20,7 +20,7 @@ public class JdbcTransactionRepo implements TransactionRepo {
     public Transaction findById(int transactionId) {
         String sql = "SELECT * FROM transactions WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setLong(1, transactionId);
+            statement.setInt(1, transactionId);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return mapResultSetToTransaction(resultSet);
@@ -51,12 +51,13 @@ public class JdbcTransactionRepo implements TransactionRepo {
 
     @Override
     public void save(Transaction transaction) {
-        String sql = "INSERT INTO users (buyer_id, seller_id, product_id, bid) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO transactions (transaction_id, buyer_id, seller_id, product_id, bid) VALUES (?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, transaction.getBuyerID());
-            statement.setInt(2, transaction.getSellerID());
-            statement.setInt(3, transaction.getProductID());
-            statement.setFloat(4, transaction.getBid());
+            statement.setInt(1, transaction.getTransactionID());
+            statement.setInt(2, transaction.getBuyerID());
+            statement.setInt(3, transaction.getSellerID());
+            statement.setInt(4, transaction.getProductID());
+            statement.setFloat(5, transaction.getBid());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,7 +67,7 @@ public class JdbcTransactionRepo implements TransactionRepo {
 
     @Override
     public void update(Transaction transaction) {
-        String sql = "UPDATE users SET buyer_id = ?, seller_id = ?, product_id = ?, bid = ? WHERE id = ?";
+        String sql = "UPDATE transactions SET buyer_id = ?, seller_id = ?, product_id = ?, bid = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, transaction.getBuyerID());
             statement.setInt(2, transaction.getSellerID());
@@ -83,7 +84,7 @@ public class JdbcTransactionRepo implements TransactionRepo {
 
     @Override
     public void delete(Transaction transaction) {
-        String sql = "DELETE FROM users WHERE id = ?";
+        String sql = "DELETE FROM transactions WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, transaction.getTransactionID());
             statement.executeUpdate();

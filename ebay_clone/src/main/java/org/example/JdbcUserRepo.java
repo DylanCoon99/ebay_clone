@@ -20,7 +20,7 @@ public class JdbcUserRepo implements UserRepo {
     public User findById(int userId) {
         String sql = "SELECT * FROM users WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setLong(1, userId);
+            statement.setInt(1, userId);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     return mapResultSetToUser(resultSet);
@@ -51,11 +51,12 @@ public class JdbcUserRepo implements UserRepo {
 
     @Override
     public void save(User user) {
-        String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (user_id, username, email, password) VALUES (?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, user.getUsername());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
+            statement.setInt(1, user.getUserID());
+            statement.setString(2, user.getUsername());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getPassword());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

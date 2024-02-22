@@ -1,23 +1,33 @@
 package org.example;
+import java.sql.Blob;
 
 public class Product {
 
-    private Integer productID;
-
+    private int productID;
     private String name;
-    private double price;
+    private float price;
     private String description;
 
     // think about how to display an image for each product
     // private ____ image;
+    private Blob image;
+
+    public Product(int productID, String name, float price, String description, Blob image) {
+        setProductID(productID);
+        setName(name);
+        setPrice(price);
+        setDescription(description);
+        setImage(image);
+    }
+
 
     // set productID
-    public void setProductID() {
+    public void setProductID(int productID) {
         this.productID = productID;
     }
 
     // get productID
-    public Integer getProductID() {
+    public int getProductID() {
         return this.productID;
     }
 
@@ -32,7 +42,7 @@ public class Product {
     }
 
     // set price
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -51,5 +61,7 @@ public class Product {
         return this.description;
     }
 
+    public void setImage(Blob image) { this.image = image;}
 
+    public Blob getImage() { return this.image;}
 }
