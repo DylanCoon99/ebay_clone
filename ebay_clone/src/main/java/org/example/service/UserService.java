@@ -27,17 +27,19 @@ public class UserService {
         return Optional.ofNullable(user);
     }
 
-    public void createUser(User user) {
+    public User createUser(User user) {
         userRepo.save(user);
+        return user;
     }
 
-    public void updateUser(User user) {
+    public User updateUser(User user) {
         // Implement update logic
         userRepo.update(user);
+        return userRepo.findById(user.getUserID());
     }
 
-    public void deleteUser(User user) {
-        userRepo.delete(user);
+    public void deleteUser(int userId) {
+        userRepo.delete(userId);
     }
 
 }

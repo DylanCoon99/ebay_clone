@@ -80,10 +80,10 @@ public class JdbcUserRepo implements UserRepo {
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(int userId) {
         String sql = "DELETE FROM users WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, user.getUserID());
+            statement.setInt(1, userId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
