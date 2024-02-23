@@ -27,17 +27,19 @@ public class TransactionService {
         return Optional.ofNullable(transaction);
     }
 
-    public void createTransaction(Transaction transaction) {
+    public Transaction createTransaction(Transaction transaction) {
         transactionRepo.save(transaction);
+        return transaction;
     }
 
-    public void updateTransaction(Transaction transaction) {
+    public Transaction updateTransaction(Transaction transaction) {
         // Implement update logic
         transactionRepo.update(transaction);
+        return transactionRepo.findById(transaction.getTransactionID());
     }
 
-    public void deleteTransaction(Transaction transaction) {
-        transactionRepo.delete(transaction);
+    public void deleteTransaction(int transactionId) {
+        transactionRepo.delete(transactionId);
     }
 
 

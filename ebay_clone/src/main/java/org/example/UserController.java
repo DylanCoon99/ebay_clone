@@ -1,23 +1,20 @@
 package org.example;
-import jdk.javadoc.doclet.Reporter;
 import org.springframework.web.bind.annotation.*;
 
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@RestController //indicates that this class is a rest controller that takes in a request and returns a JSON response
 @RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
 
-    @Autowired
+    @Autowired // UserController has a dependency on UserService
     public UserController(UserService userService) {
         this.userService = userService;
     }

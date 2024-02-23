@@ -10,5 +10,5 @@ public interface TransactionRepo {
 
     void update(Transaction transaction);
 
-    void delete(Transaction transaction);
+    void delete(int transactionId);
 }

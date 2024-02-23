@@ -83,10 +83,10 @@ public class JdbcTransactionRepo implements TransactionRepo {
     }
 
     @Override
-    public void delete(Transaction transaction) {
+    public void delete(int transactionId) {
         String sql = "DELETE FROM transactions WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, transaction.getTransactionID());
+            statement.setInt(1, transactionId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
