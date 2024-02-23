@@ -1,8 +1,8 @@
 package org.example;
+
 import org.example.service.TransactionService;
 import org.springframework.web.bind.annotation.*;
 
-import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,13 +41,13 @@ public class TransactionController {
     }
 
     @PostMapping
-    public ResponseEntity<Transaction> createUser(@RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         Transaction createdTransaction = transactionService.createTransaction(transaction);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdTransaction);
     }
 
     @PutMapping("/{transactionId}")
-    public ResponseEntity<Transaction> updateUser(@PathVariable int transactionId, @RequestBody Transaction transaction) {
+    public ResponseEntity<Transaction> updateTransaction(@PathVariable int transactionId, @RequestBody Transaction transaction) {
         Transaction updatedTransaction = transactionService.updateTransaction(transaction);
         if(updatedTransaction != null) {
             return ResponseEntity.ok(updatedTransaction);
@@ -56,8 +56,8 @@ public class TransactionController {
         }
     }
 
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable int transactionId) {
+    @DeleteMapping("/{transactionId}")
+    public ResponseEntity<Void> deleteTransaction(@PathVariable int transactionId) {
         transactionService.deleteTransaction(transactionId);
         return ResponseEntity.noContent().build();
 

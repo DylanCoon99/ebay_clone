@@ -11,6 +11,6 @@ public interface ProductRepo {
 
     void update(Product product);
 
-    void delete(Product product);
+    void delete(int productId);
 
 }

@@ -86,10 +86,10 @@ public class JdbcProductRepo implements ProductRepo {
     }
 
     @Override
-    public void delete(Product product) {
+    public void delete(int productId) {
         String sql = "DELETE FROM products WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, product.getProductID());
+            statement.setInt(1, productId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

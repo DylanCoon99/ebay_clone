@@ -28,17 +28,19 @@ public class ProductService {
         return Optional.ofNullable(product);
     }
 
-    public void createProduct(Product product) {
+    public Product createProduct(Product product) {
         productRepo.save(product);
+        return product;
     }
 
-    public void updateProduct(Product product) {
+    public Product updateProduct(Product product) {
         // Implement update logic
         productRepo.update(product);
+        return productRepo.findById(product.getProductID());
     }
 
-    public void deleteProduct(Product product) {
-        productRepo.delete(product);
+    public void deleteProduct(int productId) {
+        productRepo.delete(productId);
     }
 
 }
