@@ -9,12 +9,6 @@ public class User {
     private String password; // eventually store hashed version of the password for security purposes
     private String cardNo;
 
-    public User(int user_id, String username, String email, String password) {
-        setUserID(user_id);
-        setUsername(username);
-        setEmail(email);
-        setPassword(password);
-    }
 
     // set userID
     public void setUserID(Integer userID) {

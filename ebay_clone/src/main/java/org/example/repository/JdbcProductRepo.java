@@ -107,7 +107,13 @@ public class JdbcProductRepo implements ProductRepo {
         String description = resultSet.getString("description");
         Blob image = resultSet.getBlob("image");
 
-        return new Product(product_id, product_name, price, description, image);
+        Product productReturn =  new Product();
+        productReturn.setProductID(product_id);
+        productReturn.setName(product_name);
+        productReturn.setPrice(price);
+        productReturn.setDescription(description);
+        productReturn.setImage(image);
+        return productReturn;
     }
 
 

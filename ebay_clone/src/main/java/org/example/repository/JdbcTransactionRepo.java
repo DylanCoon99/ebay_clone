@@ -104,7 +104,14 @@ public class JdbcTransactionRepo implements TransactionRepo {
         int product_id = resultSet.getInt("product_id");
         float bid = resultSet.getFloat("bid");
 
-        return new Transaction(transaction_id, buyer_id, seller_id, product_id, bid);
+        Transaction transactionReturn = new Transaction();
+        transactionReturn.setTransactionID(transaction_id);
+        transactionReturn.setBuyerID(buyer_id);
+        transactionReturn.setSellerID(seller_id);
+        transactionReturn.setProductID(product_id);
+        transactionReturn.setBid(bid);
+        return transactionReturn;
+
     }
 
 

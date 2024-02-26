@@ -52,17 +52,19 @@ public class JdbcUserRepo implements UserRepo {
     }
 
     @Override
-    public void save(User user) {
-        String sql = "INSERT INTO users (user_id, username, email, password) VALUES (?, ?, ?)";
+    public User save(User user) {
+        String sql = "INSERT INTO users (user_id, username, email, password) VALUES (?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, user.getUserID());
             statement.setString(2, user.getUsername());
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getPassword());
             statement.executeUpdate();
+            return user;
         } catch (SQLException e) {
             e.printStackTrace();
             // add more robust logging later
+            return null;
         }
     }
 
@@ -78,6 +80,7 @@ public class JdbcUserRepo implements UserRepo {
         } catch (SQLException e) {
             e.printStackTrace();
             // add more robust logging later
+
         }
     }
 
@@ -99,7 +102,12 @@ public class JdbcUserRepo implements UserRepo {
         String username = resultSet.getString("username");
         String email = resultSet.getString("email");
         String password = resultSet.getString("password");
-        return new User(id, username, email, password);
+        User userReturn = new User();
+        userReturn.setUserID(id);
+        userReturn.setUsername(username);
+        userReturn.setEmail(email);
+        userReturn.setPassword(password);
+        return userReturn;
     }
 
 }

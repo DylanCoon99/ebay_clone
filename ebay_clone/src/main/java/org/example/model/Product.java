@@ -12,14 +12,6 @@ public class Product {
     // private ____ image;
     private Blob image;
 
-    public Product(int productID, String name, float price, String description, Blob image) {
-        setProductID(productID);
-        setName(name);
-        setPrice(price);
-        setDescription(description);
-        setImage(image);
-    }
-
 
     // set productID
     public void setProductID(int productID) {

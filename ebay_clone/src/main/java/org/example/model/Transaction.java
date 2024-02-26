@@ -8,14 +8,6 @@ public class Transaction {
     private int productID;
     private float bid;
 
-    public Transaction(int transaction_id, int seller_id, int buyer_id, int product_id, float bid) {
-        setTransactionID(transaction_id);
-        setBuyerID(buyer_id);
-        setSellerID(seller_id);
-        setProductID(product_id);
-        setBid(bid);
-    }
-
     public void setTransactionID(int transactionId) {
         this.transactionId = transactionId;
     }
