@@ -1,7 +1,7 @@
 package org.example.service;
 
-import org.example.Transaction;
-import org.example.TransactionRepo;
+import org.example.model.Transaction;
+import org.example.repository.TransactionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

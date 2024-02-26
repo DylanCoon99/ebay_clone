@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 import java.sql.Blob;
 
 public class Product {

@@ -1,4 +1,6 @@
-package org.example;
+package org.example.repository;
+
+import org.example.model.Transaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

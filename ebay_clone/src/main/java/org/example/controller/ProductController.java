@@ -1,5 +1,6 @@
-package org.example;
+package org.example.controller;
 
+import org.example.model.Product;
 import org.example.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,7 +64,6 @@ public class ProductController {
         return ResponseEntity.noContent().build();
 
     }
-
 
 
 }

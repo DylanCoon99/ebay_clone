@@ -1,7 +1,7 @@
 package org.example.service;
 
-import org.example.Product;
-import org.example.ProductRepo;
+import org.example.model.Product;
+import org.example.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

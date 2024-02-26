@@ -1,5 +1,6 @@
-package org.example;
+package org.example.controller;
 
+import org.example.model.Transaction;
 import org.example.service.TransactionService;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.model.User;
+
 import java.sql.DriverManager;
 import java.sql.*;
 
