@@ -12,7 +12,7 @@ Goals for this project:
 - Handle Concurrent Requests
 - Rate Throttling
 - Database Integration
-	- Need to think about what database to use
+	- Need to think about what database to use (done - MySQL)
 	- Need to design a schema (Established Tables, Fields, etc.)
 - RESTful Design
 	- Resource Naming
@@ -67,4 +67,8 @@ Class Level Architecture
 
 - Security
 	- SecurityConfig -> Configures security settings for the app
+
+
+
+Database Tests
 

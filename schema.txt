@@ -1,0 +1,24 @@
+Database Notes
+- MySQL
+- How to store images in a database
+	- https://www.tutorialspoint.com/how-to-insert-an-image-in-to-mysql-database-using-java-program
+
+	 	    Schema
+
+- Users   Fields                Type
+	- user_id            int
+	- username           varchar(50)
+	- email              varchar(100)
+	- password           varchar(100)
+- Products
+	- product_id         int
+	- product_name       varchar(50)
+	- price              float(8,2)
+	- description        varchar(500)  --> could be subject to change
+	- image              blob          --> figure out how tf this works
+- Transactions
+	- transaction_id     int
+	- buyer_id           int
+	- seller_id          int
+	- product_id         int
+	- bid_amount         float(8,2)
