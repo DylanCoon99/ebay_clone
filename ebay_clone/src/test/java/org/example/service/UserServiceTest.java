@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.model.User;
+import org.example.repository.JdbcUserRepo;
 import org.example.repository.UserRepo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,27 +13,27 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
 
-    @Mock
-    private UserRepo userRepo;
+    //@Mock
+    private UserRepo userRepo = new JdbcUserRepo();
 
-    @InjectMocks
-    private UserService userService;
+    //@InjectMocks
+    private UserService userService = new UserService(userRepo);
 
 
     @Test
     public void InsertUser() {
         // Instantiate a user
         User userToInsert = new User();
-        userToInsert.setUserID(3);
+        userToInsert.setUserID(2);
         userToInsert.setUsername("testUser");
         userToInsert.setEmail("test@example.com");
         userToInsert.setPassword("123456789");
 
 
-        when(userService.createUser(any(User.class))).thenReturn(userToInsert);
+        // when(userService.createUser(any(User.class))).thenReturn(userToInsert);
 
         User insertedUser = userService.createUser(userToInsert);
         System.out.println(insertedUser.getUsername());

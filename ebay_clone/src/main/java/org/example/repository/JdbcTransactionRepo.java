@@ -1,6 +1,7 @@
 package org.example.repository;
 
 import org.example.model.Transaction;
+import org.example.DatabaseManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,14 +15,15 @@ public class JdbcTransactionRepo implements TransactionRepo {
     private final Connection connection;
 
     // Constructor to inject the database connection
-    public JdbcTransactionRepo(Connection connection) {
-        this.connection = connection;
+    public JdbcTransactionRepo() {
+        this.connection = null;
     }
 
     @Override
     public Transaction findById(int transactionId) {
         String sql = "SELECT * FROM transactions WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DatabaseManager.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, transactionId);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
@@ -39,7 +41,8 @@ public class JdbcTransactionRepo implements TransactionRepo {
     public List<Transaction> findAll() {
         List<Transaction> transactions = new ArrayList<>();
         String sql = "SELECT * FROM transactions";
-        try (PreparedStatement statement = connection.prepareStatement(sql);
+        try (Connection connection = DatabaseManager.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 transactions.add(mapResultSetToTransaction(resultSet));
@@ -53,8 +56,9 @@ public class JdbcTransactionRepo implements TransactionRepo {
 
     @Override
     public void save(Transaction transaction) {
-        String sql = "INSERT INTO transactions (transaction_id, buyer_id, seller_id, product_id, bid) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        String sql = "INSERT INTO transactions (transaction_id, buyer_id, seller_id, product_id, bid) VALUES (?, ?, ?, ?, ?)";
+        try (Connection connection = DatabaseManager.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, transaction.getTransactionID());
             statement.setInt(2, transaction.getBuyerID());
             statement.setInt(3, transaction.getSellerID());
@@ -70,7 +74,8 @@ public class JdbcTransactionRepo implements TransactionRepo {
     @Override
     public void update(Transaction transaction) {
         String sql = "UPDATE transactions SET buyer_id = ?, seller_id = ?, product_id = ?, bid = ? WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DatabaseManager.getConnection();
+                PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, transaction.getBuyerID());
             statement.setInt(2, transaction.getSellerID());
             statement.setInt(3, transaction.getProductID());
@@ -87,7 +92,8 @@ public class JdbcTransactionRepo implements TransactionRepo {
     @Override
     public void delete(int transactionId) {
         String sql = "DELETE FROM transactions WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (
+                PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, transactionId);
             statement.executeUpdate();
         } catch (SQLException e) {
